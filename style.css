@@ -101,10 +101,12 @@ span {
 .bloc .container {
     padding-left: 0;
     padding-right: 0;
+   
 }
 
 .bloc-lg {
-    padding: 100px 50px;
+    padding: 50px 50px;
+   
    
 }
 
@@ -727,6 +729,7 @@ a {
 
 .container {
     max-width: 1000px;
+   
 }
 
 .hero-bloc-text {
@@ -824,7 +827,7 @@ h4 {
 }
 
 .black-background {
-    background-color: rgba(213, 219, 243, 0.7);
+    background-color: rgba(247, 231, 218, 0.7);
     padding: 40px 40px 40px 40px;
 }
 
@@ -894,7 +897,9 @@ h4 {
 
 .bg-presentation {
     background-image: url("img/image-de-presentation.jpg");
-    opacity: 0.8;
+    opacity: 1;
+    height: 60%;
+    
    
 }
 
@@ -1052,6 +1057,7 @@ h4 {
     .bloc-xl,
     .bloc-lg {
         padding: 40px 0;
+       
     }
     .bloc-sm,
     .bloc-md {

@@ -43,7 +43,7 @@ html {
 }
 
 main {
-  background-color: white;
+  background-image: linear-gradient(to bottom, transparent, white);
 }
 
 * {
@@ -53,54 +53,102 @@ main {
 }
 
 
-ul{
-	display: flex;
-	width: 100%;
-	height: 30px;
-	margin: auto;
-	max-width: 1000px;
-	justify-content: space-between;
-	text-align: center;
+
+
+
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, #f6ac78, transparent);
+  color: #222;
+  font-size: 20px;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: black;
+  height: 70px;
+  padding: 1em;
+  img {
+    width: 40%;
+    float: right;
+  }
 }
-li {
-	padding: 1rem 2rem 1.15rem;
-  text-transform: uppercase;
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
   cursor: pointer;
-  color: #0a0a0a;
-	min-width: 80px;
-	margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-li:hover {
-  background-image: url('https://scottyzen.sirv.com/Images/v/button.png');
-  background-size: 100% 100%;
-  color: #27262c;
-  animation: spring 300ms ease-out;
-  text-shadow: 0 -1px 0 #ef816c;
-	font-weight: bold;
-}
-li:active {
-  transform: translateY(4px);
+#menu-toggle {
+  display: none;
 }
 
-@keyframes spring {
-  15% {
-    -webkit-transform-origin: center center;
-    -webkit-transform: scale(1.2, 1.1);
-  }
-  40% {
-    -webkit-transform-origin: center center;
-    -webkit-transform: scale(0.95, 0.95);
-  }
-  75% {
-    -webkit-transform-origin: center center;
-    -webkit-transform: scale(1.05, 1);
-  }
-  100% {
-    -webkit-transform-origin: center center;
-    -webkit-transform: scale(1, 1);
-  }
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
 }
+
+.menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+
+  
+
+
+
+
+
+
+
+
+
 
 .shameless-plug{
   position: absolute;
@@ -149,7 +197,7 @@ li:active {
     padding: 0px;
     margin: 0px;
     width: 100%;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
     margin-top: 0px;
 
 
@@ -246,6 +294,8 @@ li:active {
 .table {
   display: flex;
   flex-direction: column;
+  background-color: transparent;
+ 
 }
 
 .colonne {
@@ -317,15 +367,6 @@ border-top: solid black 2px;
     }
 
 
-
-
-
-
-
-
-
-
-    
         
     @media (max-width: 767px) {
         .container {
@@ -340,5 +381,54 @@ border-top: solid black 2px;
           flex-direction: column;
         }
       
-      
+        .menu-button-container {
+          display: flex;
+          img {
+            display: none;
+          }
+        }
+        .menu {
+          position: absolute;
+          top: 0;
+          margin-top: 50px;
+          left: 0;
+          flex-direction: column;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+        }
+        .top-nav {
+          
+          background: linear-gradient(to left, #f6ac78, grey);
+        }
+        #menu-toggle ~ .menu li {
+          height: 0;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+          
+        }
+        #menu-toggle:checked ~ .menu li {
+          border: 1px solid #333;
+          height: 2.5em;
+          padding: 0.5em;
+          transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .menu > li {
+          display: flex;
+          justify-content: center;
+          margin: 0;
+          padding: 0.5em 0;
+          width: 100%;
+          color: white;
+          background-color: rgb(96, 93, 93);
+          z-index: 1000;
+          
+        }
+        .menu > li:not(:last-child) {
+          border-bottom: 1px solid #444;
+        }
       }
+      
+      
